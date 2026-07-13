@@ -1,5 +1,4 @@
 User-agent: *
-Disallow: /admin/
-Disallow: /private/
+Allow: /
 
-Sitemap: https://www.tonyautomotive.com/sitemap.xml
+Sitemap: https://tony-automotive.vercel.app/sitemap.xml

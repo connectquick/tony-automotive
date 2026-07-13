@@ -1,101 +1,119 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { BUSINESS, locations } from "@/lib/site";
+import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
+import Container from "@/components/site/container";
+import PageHero from "@/components/site/page-hero";
+import CtaBand from "@/components/site/cta";
+import JsonLd from "@/components/site/json-ld";
+
+export const metadata = buildMetadata({
+  title: "About Us",
+  description:
+    "Tony Automotive is a full-service auto repair shop in Gaithersburg, MD, built on honest work, clear communication, and dealer-quality repairs for Montgomery County drivers.",
+  path: "/about",
+});
+
+const values = [
+  {
+    title: "Honest estimates",
+    body: "We diagnose the real problem and explain it in plain language, then get your approval before any work begins. No upsells, no surprises.",
+  },
+  {
+    title: "Quality repairs",
+    body: "We work on domestic and import vehicles with quality parts and careful workmanship, so the fix lasts.",
+  },
+  {
+    title: "Community first",
+    body: "We're a local shop that treats every customer the way we'd want to be treated — like a neighbor, not a number.",
+  },
+];
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">About Tony Automotive</h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-            Professional auto repair services in Gaithersburg, MD since 2003
-          </p>
-        </div>
-      </section>
+    <main>
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
+      />
 
-      {/* About Content */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Story</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              For over 20 years, Tony Automotive has been serving the Gaithersburg community with quality auto repair services.
+      <PageHero
+        title={`About ${BUSINESS.name}`}
+        subtitle={`Honest, dealer-quality auto repair in ${BUSINESS.city}, ${BUSINESS.state}.`}
+      />
+
+      <section className="py-14 md:py-20">
+        <Container className="max-w-3xl">
+          <h2 className="text-2xl font-bold text-slate-900 md:text-3xl">
+            A neighborhood shop you can trust
+          </h2>
+          <div className="mt-4 space-y-4 text-base leading-relaxed text-slate-600">
+            <p>
+              {BUSINESS.name} is a full-service auto repair shop right off
+              Queenair Drive in {BUSINESS.city}, {BUSINESS.state}. We handle
+              everything from routine oil changes and brake jobs to engine
+              diagnostics, transmission service, and everything in between — for
+              nearly every make and model on the road.
+            </p>
+            <p>
+              Our approach is simple: figure out what's actually wrong, explain
+              it clearly, and give you an honest estimate before we touch a bolt.
+              We'd rather earn your trust and keep you as a customer for years
+              than push a repair you don't need. When your car is ready, we'll
+              walk you through what we did and why.
+            </p>
+            <p>
+              Whether it's a warning light you can't ignore, a strange noise, or
+              the maintenance that keeps your vehicle running for the long haul,
+              we're here to help you drive with confidence.
             </p>
           </div>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            <div>
-              <h3 className="text-2xl font-semibold text-gray-800 mb-4">Professional Auto Repair Since 2003</h3>
-              <p className="text-gray-600 mb-4">
-                Tony Automotive started as a small family-owned shop and has grown into a trusted auto repair service in Gaithersburg, MD. Our commitment to quality, honesty, and customer satisfaction has made us the go-to choice for vehicle maintenance and repairs.
-              </p>
-              <p className="text-gray-600 mb-4">
-                With over two decades of experience, our certified technicians are equipped with state-of-the-art tools and equipment to handle all types of auto repair services for domestic and foreign vehicles.
-              </p>
-              <div className="mt-6">
-                <Button asChild variant="default" size="lg" className="py-3 px-6">
-                  <Link href="/services">Our Services</Link>
-                </Button>
-              </div>
-            </div>
-            <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-96 flex items-center justify-center">
-              <span className="text-gray-500">Shop Interior Image</span>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 text-center">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-5.618 2.33M2.5 17h21m-2.5-10h2.5" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Certified Technicians</h3>
-              <p className="text-gray-600">All our mechanics are certified and trained in the latest auto repair techniques.</p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 text-center">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Quality Parts</h3>
-              <p className="text-gray-600">We use only quality parts and components for all our repairs.</p>
-            </div>
-            
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 text-center">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Warranty</h3>
-              <p className="text-gray-600">Comprehensive warranty on all our services and repairs.</p>
-            </div>
-          </div>
-
-          <div className="bg-blue-50 p-8 rounded-lg border border-blue-100 mb-12">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">Why Choose Tony Automotive?</h3>
-            <ul className="list-disc pl-5 text-gray-600 space-y-2">
-              <li>Over 20 years of experience in auto repair</li>
-              <li>Certified and trained technicians</li>
-              <li>State-of-the-art equipment and facilities</li>
-              <li>Honest pricing with no hidden fees</li>
-              <li>Comprehensive warranty on all services</li>
-              <li>Convenient location in Gaithersburg, MD</li>
-              <li>24/7 emergency roadside assistance available</li>
-            </ul>
-          </div>
-
-          <div className="text-center">
-            <Button asChild variant="default" size="lg" className="py-6 text-lg">
-              <Link href="/contact">Contact Us Today</Link>
-            </Button>
-          </div>
-        </div>
+        </Container>
       </section>
-    </div>
+
+      <section className="bg-slate-50 py-14 md:py-20">
+        <Container>
+          <h2 className="text-center text-2xl font-bold text-slate-900 md:text-3xl">
+            What we stand for
+          </h2>
+          <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+            {values.map((value) => (
+              <div
+                key={value.title}
+                className="rounded-lg border border-slate-200 bg-white p-6"
+              >
+                <h3 className="text-lg font-semibold text-slate-900">
+                  {value.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  {value.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-14 md:py-20">
+        <Container className="max-w-3xl">
+          <h2 className="text-2xl font-bold text-slate-900 md:text-3xl">
+            Proudly serving {BUSINESS.county}
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-slate-600">
+            From our shop in {BUSINESS.city}, we serve drivers across{" "}
+            {BUSINESS.county} and the surrounding communities — including{" "}
+            {locations
+              .filter((l) => l.slug !== "gaithersburg")
+              .slice(0, 6)
+              .map((l) => l.name)
+              .join(", ")}
+            , and more. Wherever you are in the area, dealer-quality service is
+            just a short drive away.
+          </p>
+        </Container>
+      </section>
+
+      <CtaBand heading="Have a question about your vehicle?" />
+    </main>
   );
 }

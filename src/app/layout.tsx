@@ -1,12 +1,22 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { BUSINESS } from "@/lib/site";
+import { localBusinessJsonLd } from "@/lib/seo";
+import Header from "@/components/site/header";
+import Footer from "@/components/site/footer";
+import JsonLd from "@/components/site/json-ld";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Tony Automotive - Auto Repair Shop in Gaithersburg, MD",
-  description: "Professional auto repair services in Gaithersburg, MD. Brake repair, oil changes, tire services, emergency auto repair, and suspension repair.",
+  metadataBase: new URL(BUSINESS.url),
+  title: {
+    default: "Tony Automotive — Auto Repair in Gaithersburg, MD",
+    template: "%s | Tony Automotive",
+  },
+  description:
+    "Honest, dealer-quality auto repair in Gaithersburg, MD. Brakes, oil changes, tires, engine and transmission repair, and more — serving Montgomery County.",
 };
 
 export default function RootLayout({
@@ -16,44 +26,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* JSON-LD structured data */}
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "AutoRepair",
-              "name": "Tony Automotive",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "8041 Queenair Drive Suite 2",
-                "addressLocality": "Gaithersburg",
-                "addressRegion": "MD",
-                "postalCode": "20879",
-                "addressCountry": "US"
-              },
-              "telephone": "+13014016669",
-              "url": "https://www.tonyautomotive.com",
-              "openingHoursSpecification": [
-                {
-                  "@type": "OpeningHoursSpecification",
-                  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                  "opens": "08:00",
-                  "closes": "18:00"
-                },
-                {
-                  "@type": "OpeningHoursSpecification",
-                  "dayOfWeek": ["Saturday"],
-                  "opens": "08:00",
-                  "closes": "13:00"
-                }
-              ]
-            })
-          }}
-        />
-      </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <JsonLd data={localBusinessJsonLd()} />
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
