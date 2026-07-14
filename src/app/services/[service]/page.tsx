@@ -7,7 +7,7 @@ import PageHero from "@/components/site/page-hero";
 import FaqList from "@/components/site/faq";
 import CtaBand from "@/components/site/cta";
 import JsonLd from "@/components/site/json-ld";
-import { BUSINESS, getService, services, locations } from "@/lib/site";
+import { BUSINESS, getService, services, locations, serviceImage } from "@/lib/site";
 import {
   buildMetadata,
   serviceJsonLd,
@@ -63,6 +63,7 @@ export default async function ServicePage({
       <PageHero
         title={`${service.name} in Gaithersburg, MD`}
         subtitle={service.short}
+        image={serviceImage(service.slug)}
       >
         <Button asChild variant="secondary" size="lg">
           <a href={BUSINESS.phoneHref}>Call {BUSINESS.phone}</a>

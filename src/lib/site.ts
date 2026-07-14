@@ -285,6 +285,11 @@ export const locations: Location[] = [
   { slug: "boyds", name: "Boyds", blurb: "Friendly, honest repairs for Boyds and the surrounding area.", neighborhoods: ["Boyds", "Hoyles Mill"], drive: "just minutes away" },
 ];
 
+// Each service has its own unique generated photo (batch 2 imagery).
+export function serviceImage(slug: string): string {
+  return `/images/services/${slug}.png`;
+}
+
 export function getService(slug: string): Service | undefined {
   return services.find((s) => s.slug === slug);
 }

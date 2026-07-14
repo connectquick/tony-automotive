@@ -13,6 +13,7 @@ import {
   getService,
   getLocation,
   serviceLocationPairs,
+  serviceImage,
 } from "@/lib/site";
 import {
   buildMetadata,
@@ -84,6 +85,7 @@ export default async function ServiceLocationPage({
       <PageHero
         title={`${s.name} in ${l.name}, MD`}
         subtitle={`${s.short} Trusted ${s.noun} for ${l.name} drivers from the team at Tony Automotive in Gaithersburg.`}
+        image={serviceImage(s.slug)}
       >
         <Button asChild variant="secondary" size="lg">
           <a href={BUSINESS.phoneHref}>Call {BUSINESS.phone}</a>
