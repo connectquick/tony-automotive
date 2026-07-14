@@ -45,6 +45,7 @@ export default function Home() {
       <PageHero
         title="Professional Auto Repair in Gaithersburg, MD"
         subtitle="Honest, dealer-quality service for every make and model — from brakes and oil changes to engine and transmission repair."
+        image="/images/hero-shop.png"
       >
         <Button asChild variant="secondary" size="lg">
           <a href={BUSINESS.phoneHref}>Call {BUSINESS.phone}</a>
