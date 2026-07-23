@@ -61,4 +61,4 @@ src/
 3. Configure automatic deployment to Vercel
 4. Verify deployment at preview URL
 
-This completes the website build according to the specifications provided.
+This completes the website build according to the specifications provided.- 2026-07-23: default branch migrated master -> main; tony-automotive.vercel.app attached as Vercel project domain.
