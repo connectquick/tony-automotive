@@ -1,4 +1,4 @@
-import { BUSINESS, locations } from "@/lib/site";
+import { BUSINESS, SHOP_PHOTOS, locations } from "@/lib/site";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import Container from "@/components/site/container";
 import PageHero from "@/components/site/page-hero";
@@ -40,6 +40,7 @@ export default function AboutPage() {
       <PageHero
         title={`About ${BUSINESS.name}`}
         subtitle={`Honest, dealer-quality auto repair in ${BUSINESS.city}, ${BUSINESS.state}.`}
+        image={SHOP_PHOTOS.mechanic.src}
       />
 
       <section className="py-14 md:py-20">
@@ -67,6 +68,18 @@ export default function AboutPage() {
               the maintenance that keeps your vehicle running for the long haul,
               we're here to help you drive with confidence.
             </p>
+          </div>
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {[SHOP_PHOTOS.storefront, SHOP_PHOTOS.interior].map((photo) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={photo.src}
+                src={photo.src}
+                alt={photo.alt}
+                loading="lazy"
+                className="h-72 w-full rounded-xl object-cover shadow-sm"
+              />
+            ))}
           </div>
         </Container>
       </section>

@@ -23,6 +23,44 @@ export const BUSINESS = {
   tagline: "Honest, dealer-quality auto repair in Gaithersburg, MD",
 } as const;
 
+// Real Google Business Profile data (checked 2026-07-23). Update rating/count together.
+export const GOOGLE_RATING = {
+  value: 4.8,
+  count: 11,
+  url: "https://maps.google.com/?cid=8196200789799977690",
+} as const;
+
+export type Review = { author: string; rating: number; when: string; text: string };
+
+// Verbatim customer reviews pulled from the shop's Google listing — do not edit or invent.
+export const googleReviews: Review[] = [
+  {
+    author: "Jasmine Montiel",
+    rating: 5,
+    when: "2025",
+    text: "I had such a great experience at Tony Automotive! The team here is fast, honest, and incredibly hardworking. From the very beginning, their communication was excellent — they kept me updated every step of the way.",
+  },
+  {
+    author: "Rosa Flores",
+    rating: 5,
+    when: "2021",
+    text: "Highly recommend Tony Automotive! I have been taking my car to him for years. Very professional and detailed oriented when it comes to explaining what issues your car is having. He also does towing! Which is convenient. Excellent customer service!",
+  },
+  {
+    author: "April S",
+    rating: 5,
+    when: "2021",
+    text: "Great service. Prompt and reasonably priced. My family has had several cars serviced here. Just picked up our Toyota Prius. Thanks Tony!",
+  },
+];
+
+// Real photos of the shop from the owner's Google Business Profile.
+export const SHOP_PHOTOS = {
+  interior: { src: "/images/shop/shop-interior.jpg", alt: "Inside the Tony Automotive shop in Gaithersburg — truck on a lift and a classic car being restored" },
+  mechanic: { src: "/images/shop/mechanic-at-work.jpg", alt: "Tony Automotive technician performing brake service on a pickup truck" },
+  storefront: { src: "/images/shop/storefront.jpg", alt: "Tony Automotive storefront at 8041 Queenair Drive Suite 2, Gaithersburg, MD" },
+} as const;
+
 export type Faq = { q: string; a: string };
 
 export type Service = {

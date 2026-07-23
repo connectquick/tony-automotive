@@ -6,6 +6,7 @@ import Container from "@/components/site/container";
 import PageHero from "@/components/site/page-hero";
 import FaqList from "@/components/site/faq";
 import CtaBand from "@/components/site/cta";
+import Reviews from "@/components/site/reviews";
 import JsonLd from "@/components/site/json-ld";
 import { BUSINESS, getService, services, locations, serviceImage } from "@/lib/site";
 import {
@@ -192,6 +193,8 @@ export default async function ServicePage({
           </div>
         </Container>
       </section>
+
+      <Reviews />
 
       <CtaBand />
     </div>

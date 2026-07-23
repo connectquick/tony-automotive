@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { BUSINESS, services, locations, type Faq } from "@/lib/site";
+import { BUSINESS, SHOP_PHOTOS, services, locations, type Faq } from "@/lib/site";
 import { localBusinessJsonLd } from "@/lib/seo";
 import Container from "@/components/site/container";
 import PageHero from "@/components/site/page-hero";
 import ServiceCard from "@/components/site/service-card";
 import FaqList from "@/components/site/faq";
 import CtaBand from "@/components/site/cta";
+import Reviews from "@/components/site/reviews";
 import JsonLd from "@/components/site/json-ld";
 
 const homeFaqs: Faq[] = [
@@ -45,7 +46,7 @@ export default function Home() {
       <PageHero
         title="Professional Auto Repair in Gaithersburg, MD"
         subtitle="Honest, dealer-quality service for every make and model — from brakes and oil changes to engine and transmission repair."
-        image="/images/hero-shop.png"
+        image={SHOP_PHOTOS.interior.src}
       >
         <Button asChild variant="secondary" size="lg">
           <a href={BUSINESS.phoneHref}>Call {BUSINESS.phone}</a>
@@ -119,6 +120,35 @@ export default function Home() {
               >
                 {location.name}
               </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Real customer reviews from Google */}
+      <Reviews />
+
+      {/* Inside the shop — real photos */}
+      <section className="py-14 md:py-20">
+        <Container>
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-2xl font-bold text-slate-900 md:text-3xl">
+              Inside our shop
+            </h2>
+            <p className="mt-4 text-base text-slate-600">
+              Real photos from our shop on Queenair Drive — stop by and see us.
+            </p>
+          </div>
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {[SHOP_PHOTOS.interior, SHOP_PHOTOS.mechanic, SHOP_PHOTOS.storefront].map((photo) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={photo.src}
+                src={photo.src}
+                alt={photo.alt}
+                loading="lazy"
+                className="h-72 w-full rounded-xl object-cover shadow-sm md:h-80"
+              />
             ))}
           </div>
         </Container>
